@@ -3,10 +3,7 @@ package com.apress.spring6recipes.court.service;
 import com.apress.spring6recipes.court.domain.Member;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 class InMemoryMemberService implements MemberService {
@@ -23,6 +20,9 @@ class InMemoryMemberService implements MemberService {
 
 	public List<Member> list() {
 		return new ArrayList<>(members.values());
+	}
+	public Optional<Member> find(String memberName) {
+		return Optional.ofNullable(members.get(memberName));
 	}
 
 }

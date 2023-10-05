@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class Reservation {
 
@@ -37,6 +39,9 @@ public class Reservation {
 		this.hour = hour;
 		this.player = player;
 		this.sportType = sportType;
+	}
+	public Date getDateAsUtilDate() {
+		return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
 	public String getCourtName() {
